@@ -1,13 +1,14 @@
 package com.edu.excellence.entity;
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -18,9 +19,9 @@ public class Student {
 	private	String studentName;
 	private Date studentDOB;
 	private String studentClass;
-	/*
-	 * @OneToOne(cascade = CascadeType.ALL) private Address studentAddress;
-	 */
+	
+	@OneToMany(cascade = CascadeType.ALL)
+    private List<Address> addresses;
 	
 	
 	public Integer getStudentId() {
@@ -47,10 +48,12 @@ public class Student {
 	public void setStudentClass(String studentClass) {
 		this.studentClass = studentClass;
 	}
-	/*
-	 * public Address getStudentAddress() { return studentAddress; } public void
-	 * setStudentAddress(Address studentAddress) { this.studentAddress =
-	 * studentAddress; }
-	 */
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
+	}
+	
 	
 }
